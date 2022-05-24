@@ -9,5 +9,5 @@ This is the backend repository built on Django framework and utilises Django Res
 ### The API Routes:
 <ul>
   <li> movies/list/ - Movie List page </li>
-  <li> movies/list/<int:id> - Movie List page </li> 
+  <li> movies/list/id/ - Movie detail page </li> 
 </ul>  
