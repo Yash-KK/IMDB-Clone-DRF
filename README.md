@@ -3,7 +3,9 @@ This is the backend repository built on Django framework and utilises Django Res
 
 ### Status Codes:
 200 : Success
+
 401 : Unauthorized
+
 404 : Error
 
 ### The API Routes:
