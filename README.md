@@ -10,6 +10,8 @@ This is the backend repository built on Django framework and utilises Django Res
 
 ### The API Routes:
 <ul>
-  <li> movies/list/ - Movie List page </li>
-  <li> movies/list/id/ - Movie detail page </li> 
+  <li> watch/list/ - Movie List page </li>
+  <li> watch/list/id/ - Movie detail page </li> 
+  <li> watch/stream/ - Streaming Platform  List Page </li>
+  <li> watch/stream/id/ - Streaming Platform Detail Page  </li>
 </ul>  
