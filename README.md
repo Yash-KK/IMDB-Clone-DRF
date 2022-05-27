@@ -4,6 +4,8 @@ This is the backend repository built on Django framework and utilises Django Res
 ### Status Codes:
 200 : Success
 
+204 : No Content
+
 401 : Unauthorized
 
 404 : Error
