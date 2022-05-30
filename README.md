@@ -18,7 +18,7 @@ This is the backend repository built on Django framework and utilises Django Res
   <li> watch/stream/ - Streaming Platform  List Page </li>
   <li> watch/stream/id/ - Streaming Platform Detail Page  </li>
   
-  <li> stream/<int:pk>/review-create/ - Review Create for a particular Movie  </li>
-  <li> stream/<int:pk>/review/ - Review Create for a particular Movie  </li>
-  <li> stream/review/<int:pk>/ - Review Detail Page  </li>
+  <li> stream/id/review-create/ - Review Create for a particular Movie  </li>
+  <li> stream/id/review/ - Review Create for a particular Movie  </li>
+  <li> stream/review/id/ - Review Detail Page  </li>
 </ul>  
