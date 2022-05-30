@@ -6,19 +6,26 @@ from .models import (
     )
 
 class Review_Serializer(serializers.ModelSerializer):
+    review_user = serializers.StringRelatedField(read_only=True)
     class Meta:
         model = Review
         # fields = '__all__'
         exclude = ('watchlist',)
 
+    
+    
 class WatchList_Serializer(serializers.ModelSerializer):
-    reviews = serializers.StringRelatedField(many=True)
+    reviews = Review_Serializer(many=True,read_only=True)   
+    
     class Meta:
         model = WatchList
         fields = '__all__'
+    
+    
+        
         
 class StreamPlatform_Serializer(serializers.ModelSerializer):
-    watchlist = WatchList_Serializer(many=True,read_only=True)
+    watchlist = serializers.StringRelatedField(many=True)
     class Meta:
         model = StreamPlatform
         fields = '__all__'
