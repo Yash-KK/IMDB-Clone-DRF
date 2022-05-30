@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from rest_framework import generics
 from rest_framework.views import APIView
 from rest_framework import status
+from rest_framework.exceptions import ValidationError
 
 from .serializer import (
     Review_Serializer,
@@ -33,10 +34,20 @@ class ReviewList(generics.ListAPIView):
     
 class ReviewCreate(generics.CreateAPIView):
     serializer_class = Review_Serializer
+    
+    def get_queryset(self):
+        return Review.objects.all()
+    
     def perform_create(self, serializer):
         pk = self.kwargs['pk']
         movie = WatchList.objects.get(pk=pk)
-        serializer.save(watchlist=movie)
+        
+        review_user = self.request.user
+        rev = Review.objects.filter(watchlist=movie,review_user=review_user)
+        if rev.exists():
+            raise ValidationError("User already Reviewed this Movie!")
+        
+        serializer.save(watchlist=movie,review_user=review_user)
         
 
 class ReviewDetail(generics.RetrieveUpdateDestroyAPIView):
