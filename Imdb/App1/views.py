@@ -7,6 +7,8 @@ from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.exceptions import ValidationError
 
+
+from .permission import isAdminOrRead, isOwnerorReadOnly
 from .serializer import (
     Review_Serializer,
     WatchList_Serializer,
@@ -51,6 +53,7 @@ class ReviewCreate(generics.CreateAPIView):
         
 
 class ReviewDetail(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = [isOwnerorReadOnly]
     queryset = Review.objects.all()
     serializer_class = Review_Serializer    
 
@@ -63,6 +66,7 @@ class WatchListAPV(generics.ListCreateAPIView):
     serializer_class = WatchList_Serializer
 
 class WatchDetailAPV(generics.RetrieveUpdateDestroyAPIView):
+    
     queryset = WatchList.objects.all()
     serializer_class = WatchList_Serializer    
     
