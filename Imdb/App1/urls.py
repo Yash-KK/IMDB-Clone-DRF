@@ -3,7 +3,7 @@ from . import views
 
 urlpatterns = [
    path("",views.WatchListAPV.as_view(),name='watch-list'),
-   path("<int:pk>",views.WatchDetailAPV.as_view(),name='watch-detail'),
+   path("<int:pk>/",views.WatchDetailAPV.as_view(),name='watch-detail'),
    
    path("stream/",views.StreamListAPV.as_view(),name='stream-list'),
    path("stream/<int:pk>",views.StreamDetailAPV.as_view(),name='stream-detail'),
