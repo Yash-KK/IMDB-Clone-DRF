@@ -6,7 +6,7 @@ from rest_framework import generics
 from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.exceptions import ValidationError
-
+from rest_framework.permissions import IsAuthenticated
 
 from .permission import isAdminOrRead, isOwnerorReadOnly
 from .serializer import (
@@ -67,7 +67,8 @@ class ReviewDetail(generics.RetrieveUpdateDestroyAPIView):
 """
 WatchList Related
 """
-class WatchListAPV(generics.ListCreateAPIView):
+class WatchListAPV(generics.ListCreateAPIView): 
+    permission_classes = [IsAuthenticated ]
     queryset = WatchList.objects.all()
     serializer_class = WatchList_Serializer
 
