@@ -8,7 +8,7 @@ from rest_framework import status
 from rest_framework.exceptions import ValidationError
 from rest_framework.permissions import IsAuthenticated
 
-from .permission import isAdminOrRead, isOwnerorReadOnly
+from .permission import isAdminOrReadOnly, isOwnerOrReadOnly
 from .serializer import (
     Review_Serializer,
     WatchList_Serializer,
@@ -36,7 +36,7 @@ class ReviewList(generics.ListAPIView):
     
 class ReviewCreate(generics.CreateAPIView):
     serializer_class = Review_Serializer
-    
+    permission_classes = [IsAuthenticated]
     def get_queryset(self):
         return Review.objects.all()
     
@@ -59,7 +59,7 @@ class ReviewCreate(generics.CreateAPIView):
         
 
 class ReviewDetail(generics.RetrieveUpdateDestroyAPIView):
-    permission_classes = [isOwnerorReadOnly]
+    permission_classes = [isOwnerOrReadOnly]
     queryset = Review.objects.all()
     serializer_class = Review_Serializer    
 
@@ -68,21 +68,23 @@ class ReviewDetail(generics.RetrieveUpdateDestroyAPIView):
 WatchList Related
 """
 class WatchListAPV(generics.ListCreateAPIView): 
-    permission_classes = [IsAuthenticated ]
+    permission_classes = [isAdminOrReadOnly]
     queryset = WatchList.objects.all()
     serializer_class = WatchList_Serializer
 
 class WatchDetailAPV(generics.RetrieveUpdateDestroyAPIView):
-    
+    permission_classes = [isAdminOrReadOnly]
     queryset = WatchList.objects.all()
     serializer_class = WatchList_Serializer    
     
 
 """Stream Platform related"""    
 class StreamListAPV(generics.ListCreateAPIView):
+    permission_classes = [isAdminOrReadOnly]
     queryset = StreamPlatform.objects.all()
     serializer_class = StreamPlatform_Serializer
 
 class StreamDetailAPV(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = [isAdminOrReadOnly]
     queryset = StreamPlatform.objects.all()
     serializer_class = StreamPlatform_Serializer    

@@ -15,7 +15,7 @@ class Review_Serializer(serializers.ModelSerializer):
     
     
 class WatchList_Serializer(serializers.ModelSerializer):
-    reviews = Review_Serializer(many=True,read_only=True)   
+    reviews = Review_Serializer(read_only=True,many=True)
     
     class Meta:
         model = WatchList
@@ -25,7 +25,7 @@ class WatchList_Serializer(serializers.ModelSerializer):
         
         
 class StreamPlatform_Serializer(serializers.ModelSerializer):
-    watchlist = serializers.StringRelatedField(many=True)
+    watchlist = WatchList_Serializer(many=True,read_only=True)
     class Meta:
         model = StreamPlatform
         fields = '__all__'
