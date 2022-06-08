@@ -21,4 +21,8 @@ This is the backend repository built on Django framework and utilises Django Res
   <li> stream/id/review-create/ - Review Create for a particular Movie  </li>
   <li> stream/id/review/ - Review Create for a particular Movie  </li>
   <li> stream/review/id/ - Review Detail Page  </li>
+  
+  <li> stream/account/login/ - Login User  </li>
+  <li> stream/account/register/ - Register User  </li>
+  <li> stream/account/logout/ - Logout User  </li>
 </ul>  
