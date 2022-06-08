@@ -29,7 +29,7 @@ Reviews Related
 class ReviewList(generics.ListAPIView):
     # queryset = Review.objects.all()
     serializer_class = Review_Serializer
-
+    permission_classes = [IsAuthenticated]
     def get_queryset(self):
         pk = self.kwargs['pk']
         return Review.objects.filter(watchlist=pk)
