@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'UserApp',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -137,6 +138,6 @@ REST_FRAMEWORK = {
         'anon': '1/day',
         'user': '3/day',
         'review-list': '5/day',
-        'watch-list':'2/day'
+        'watch-list':'10/day'
     }
 }
