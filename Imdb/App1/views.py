@@ -8,6 +8,7 @@ from rest_framework import status
 from rest_framework.exceptions import ValidationError
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.throttling import UserRateThrottle, AnonRateThrottle
+from django_filters.rest_framework import DjangoFilterBackend
 
 from .throttling import ReviewListThrottle, WatchListThrottle
 from .permission import isAdminOrReadOnly, isOwnerOrReadOnly
@@ -74,8 +75,12 @@ WatchList Related
 class WatchListAPV(generics.ListCreateAPIView): 
     permission_classes = [isAdminOrReadOnly]
     throttle_classes = [WatchListThrottle]
+    
     queryset = WatchList.objects.all()
     serializer_class = WatchList_Serializer
+    
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['movie','platform__name']
 
 class WatchDetailAPV(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [isAdminOrReadOnly]
